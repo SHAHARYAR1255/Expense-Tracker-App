@@ -1,27 +1,40 @@
-import React, {useContext} from 'react';
-import {GlobalContext} from '../context/store';
+import React, { useContext } from 'react'
 
-function AccountSummary() {
-    const {transactions} = useContext(GlobalContext);
+// Import the Global State
+import { GlobalContext } from '../context/store';
 
-    const transactionAmount = transactions.map(transaction => transaction.amount);
+ const AccountSummary = () => {
 
-    const  income = transactionAmount
-                        .filter(transaction => transaction > 0)
-                        .reduce((acc, transaction)=> (acc += transaction), 0)
-                        .toFixed(2);
+    const { transactions } = useContext(GlobalContext);
 
-    const expense = Math.abs(transactionAmount
-                        .filter(amount => amount < 0)
-                        .reduce((acc,amount)=> (acc += amount), 0)
-                        ).toFixed(2)
+    const transactionAmounts = transactions.map(transaction => Number(transaction.amount));
+    console.log(transactionAmounts);
+    const income = transactionAmounts
+        .filter(transaction => transaction > 0)
+        .reduce((acc, transaction) => (acc += transaction), 0)
+        .toFixed(2);
 
-    return (             
-        <div>
-            <h2>Summary</h2>
-            <h6>income {income}</h6>
-            <h6>expense {expense}</h6>
+    const expense = Math.abs(transactionAmounts
+        .filter(transaction => transaction < 0)
+        .reduce((acc, transaction) => (acc += transaction), 0)
+        ).toFixed(2);
+
+    return (
+        <div className="inc-exp-container">
+            <div>
+                <h4>Income</h4>
+                <p className="money plus">
+                    {income}
+                </p>
+            </div>
+            <div>
+                <h4>Expense</h4> 
+                <p className="money minus">
+                    {expense}
+                </p>
+            </div>
+            
         </div>
     )
 };
-export default AccountSummary
+export default AccountSummary;

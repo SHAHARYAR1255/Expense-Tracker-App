@@ -22,12 +22,15 @@ function TransictionHistory() {
 const TransactionList = ({transaction})=>{
     const sign = transaction.amount > 0 ? '+' : '-' ;
     const {delTrans} = useContext(GlobalContext);
+    const handleDelete = ()=>{
+        delTrans(transaction.id);
+    }
 
     return(
         <li>
             {transaction.description}
             <span>{sign}${Math.abs(transaction.amount)}</span>
-            <button onClick={()=> delTrans(transaction.id)} className="btn btn-danger">delete</button>
+            <button onClick={handleDelete} className="btn btn-danger">delete</button>
         </li>
     );
 }

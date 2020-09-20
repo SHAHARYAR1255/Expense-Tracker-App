@@ -19,9 +19,10 @@ export const GlobalProvider = ({children}) =>{
 //add an action to delete transactio
 const delTrans = id =>{
     dispatch({
-        type:'DELETE_TRANSACTIONS',
+        type:'DELETE_TRANSACTION',
         payload : id
-    })
+    });
+    console.log(state);
 };
 
 const addTrans = transaction =>{
