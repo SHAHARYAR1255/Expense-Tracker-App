@@ -1,8 +1,9 @@
-import React, {useContext, useReducer} from 'react';
+import React, { useReducer} from 'react';
 import {reducer} from './reducer';
 
 const initialState = {
     transactions : [
+        {id : 1 , description : 'halwa' , amount : 343}
     ]
 };
 

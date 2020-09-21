@@ -1,5 +1,7 @@
 import React, {useContext} from 'react';
 import {GlobalContext} from '../context/store';
+import {Card, CardBody, CardHeader, Button, ListGroup, ListGroupItem} from 'reactstrap';
+import './TransactionHistory.css';
 
 function TransictionHistory() {
     const { transactions } = useContext(GlobalContext);
@@ -7,14 +9,14 @@ function TransictionHistory() {
 
     return (
         <div>
-        <h3>Transaction History</h3>
-       <ul>
+        <h3 >Transaction History</h3>
+        <ListGroup>
             {  transactions.map(transaction =>{
                 return (
                     <TransactionList key={transaction.id} transaction={transaction} />
                 )
     })}
-       </ul>
+        </ListGroup>
        </div>
     )
 };
@@ -27,11 +29,8 @@ const TransactionList = ({transaction})=>{
     }
 
     return(
-        <li>
-            {transaction.description}
-            <span>{sign}${Math.abs(transaction.amount)}</span>
-            <button onClick={handleDelete} className="btn btn-danger">delete</button>
-        </li>
+      
+           <ListGroupItem className="col-8" color={"success"}><span>{transaction.description}</span><span>{sign}{transaction.amount}</span><Button onClick={handleDelete}>X</Button></ListGroupItem>
     );
 }
 

@@ -1,6 +1,9 @@
 *{
   margin : 0
 }
+th{
+  color : red 
+}
 
 body {
   margin: 0;

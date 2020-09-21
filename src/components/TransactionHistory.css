@@ -1,0 +1,11 @@
+List__description{
+    float : left;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+List__amount{
+    float : right;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
