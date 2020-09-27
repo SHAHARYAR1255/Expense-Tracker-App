@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {GlobalContext} from '../context/store';
-import {Card, CardBody, CardHeader, Button, ListGroup, ListGroupItem} from 'reactstrap';
+import { Button, ListGroup, ListGroupItem} from 'reactstrap';
 import './TransactionHistory.css';
 
 function TransictionHistory() {
